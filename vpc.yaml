@@ -58,6 +58,7 @@
         RouteTableId: !Ref PublicRouteTable  
 
     ## Launching my EC2 to my VPC
+  Resources:  
     EC2Instance:
       Type: AWS::EC2::Instance
       Properties:
