@@ -52,5 +52,5 @@
     PublicSubnetRouteTableAssociation:
       Type: AWS::EC2::SubnetRouteTableAssociation
       Properties:
-        SubnetId: !Ref subnetPublic
+        SubnetId: !Ref SubnetPublic
         RouteTableId: !Ref PublicRouteTable  
