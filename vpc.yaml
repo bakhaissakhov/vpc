@@ -26,16 +26,16 @@
         AvailabilityZone: us-east-1b
         VpcId: !Ref myVPC
         CidrBlock: 10.0.2.0/24
-    # ## Created InternetGateway (IGW)    
-    # InternetGateway:
-    #   Type: AWS::EC2::InternetGateway
-    #   Properties:     
-    # ## IGW attached       
-    # AttachGateway:
-    #   Type: AWS::EC2::VPCGatewayAttachment
-    #   Properties:
-    #     VpcId: !Ref myVPC
-    #     InternetGatewayId: !Ref InternetGateway
+    ## Created InternetGateway (IGW)    
+    InternetGateway:
+      Type: AWS::EC2::InternetGateway
+      Properties:     
+    ## IGW attached       
+    AttachGateway:
+      Type: AWS::EC2::VPCGatewayAttachment
+      Properties:
+        VpcId: !Ref myVPC
+        InternetGatewayId: !Ref InternetGateway
     # ## Created Custom (Public) Route Table 
     # PublicRouteTable:
     #   Type: AWS::EC2::RouteTable
