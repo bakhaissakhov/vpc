@@ -48,9 +48,9 @@
         RouteTableId: !Ref PublicRouteTable
         DestinationCidrBlock: 0.0.0.0/0
         GatewayId: !Ref InternetGateway 
-    # ## Attached the public subnet to public route table
-    # PublicSubnetRouteTableAssociation:
-    #   Type: AWS::EC2::SubnetRouteTableAssociation
-    #   Properties:
-    #     SubnetId: !Ref subnetPublic
-    #     RouteTableId: !Ref PublicRouteTable 
+    ## Attached the public subnet to public route table
+    PublicSubnetRouteTableAssociation:
+      Type: AWS::EC2::SubnetRouteTableAssociation
+      Properties:
+        SubnetId: !Ref subnetPublic
+        RouteTableId: !Ref PublicRouteTable  
