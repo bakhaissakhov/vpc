@@ -56,3 +56,12 @@
       Properties:
         SubnetId: !Ref SubnetPublic
         RouteTableId: !Ref PublicRouteTable  
+
+    ## Launching my EC2 to my VPC
+    EC2Instance:
+      Type: AWS::EC2::Instance
+      Properties:
+        SubnetId: subnet-02b62c7e779f8c47d 
+        ImageId: ami-06fcc1f0bc2c8943f
+        KeyName: california-kp
+        InstanceType: t2.micro    
