@@ -1,0 +1,57 @@
+   # This template will:
+    # Create 1 VPC (creates DEFAULT RouteTable),
+    # 2 Subnets,
+    # 1 custom RouteTable,
+    # 1 Internet Gateway,
+    # Associate 1 Subnet with Custom RouteTAble
+    # Point that Custom Route Table to your New IGW      
+  Resources:
+    ##Created VPC
+    myVPC:
+      Type: AWS::EC2::VPC
+      Properties:
+        CidrBlock: 10.0.0.0/16
+        EnableDnsSupport: true
+    ## Created 1 PublicSubnet
+    SubnetPublic:
+      Type: AWS::EC2::Subnet
+      Properties:
+        AvailabilityZone: us-east-1a
+        VpcId: !Ref myVPC
+        CidrBlock: 10.0.1.0/24
+    ## Created 1 PrivatSubnet
+    SubnetPrivate:
+      Type: AWS::EC2::Subnet
+      Properties:
+        AvailabilityZone: us-east-1b
+        VpcId: !Ref myVPC
+        CidrBlock: 10.0.2.0/24
+    ## Created InternetGateway (IGW)    
+    InternetGateway:
+      Type: AWS::EC2::InternetGateway
+      Properties:     
+    ## IGW attached       
+    AttachGateway:
+      Type: AWS::EC2::VPCGatewayAttachment
+      Properties:
+        VpcId: !Ref myVPC
+        InternetGatewayId: !Ref InternetGateway
+    ## Created Custom (Public) Route Table 
+    PublicRouteTable:
+      Type: AWS::EC2::RouteTable
+      Properties:
+        VpcId: !Ref myVPC
+    ## Public route table has direct routing to IGW:
+    PublicRoute:   
+      Type: AWS::EC2::Route
+      DependsOn: AttachGateway
+      Properties:
+        RouteTableId: !Ref PublicRouteTable
+        DestinationCidrBlock: 0.0.0.0/0
+        GatewayId: !Ref InternetGateway
+    ## Attached the public subnet to public route table
+    PublicSubnetRouteTableAssociation:
+      Type: AWS::EC2::SubnetRouteTableAssociation
+      Properties:
+        SubnetId: !Ref subnetPublic
+        RouteTableId: !Ref PublicRouteTable 
