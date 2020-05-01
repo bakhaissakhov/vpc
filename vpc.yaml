@@ -12,20 +12,20 @@
       Properties:
         CidrBlock: 10.0.0.0/16
         EnableDnsSupport: true
-    # ## Created 1 PublicSubnet
-    # SubnetPublic:
-    #   Type: AWS::EC2::Subnet
-    #   Properties:
-    #     AvailabilityZone: us-east-1a
-    #     VpcId: !Ref myVPC
-    #     CidrBlock: 10.0.1.0/24
-    # ## Created 1 PrivatSubnet
-    # SubnetPrivate:
-    #   Type: AWS::EC2::Subnet
-    #   Properties:
-    #     AvailabilityZone: us-east-1b
-    #     VpcId: !Ref myVPC
-    #     CidrBlock: 10.0.2.0/24
+    ## Created 1 PublicSubnet
+    SubnetPublic:
+      Type: AWS::EC2::Subnet
+      Properties:
+        AvailabilityZone: us-east-1a
+        VpcId: !Ref myVPC
+        CidrBlock: 10.0.1.0/24
+    ## Created 1 PrivatSubnet
+    SubnetPrivate:
+      Type: AWS::EC2::Subnet
+      Properties:
+        AvailabilityZone: us-east-1b
+        VpcId: !Ref myVPC
+        CidrBlock: 10.0.2.0/24
     # ## Created InternetGateway (IGW)    
     # InternetGateway:
     #   Type: AWS::EC2::InternetGateway
