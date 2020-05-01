@@ -62,7 +62,7 @@
     EC2Instance:
       Type: AWS::EC2::Instance
       Properties:
-        ImageId: ami-06fcc1f0bc2c8943f
+        ImageId: ami-0323c3dd2da7fb37d
         KeyName: california-kp
         InstanceType: t2.micro    
         SubnetId: subnet-02b62c7e779f8c47d 
