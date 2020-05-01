@@ -41,13 +41,13 @@
       Properties:
         VpcId: !Ref myVPC
     ## Public route table has direct routing to IGW:
-    PublicRoute:   
+    PublicRoute:    
       Type: AWS::EC2::Route
       DependsOn: AttachGateway
       Properties:
         RouteTableId: !Ref PublicRouteTable
         DestinationCidrBlock: 0.0.0.0/0
-        GatewayId: !Ref InternetGateway
+        GatewayId: !Ref InternetGateway 
     # ## Attached the public subnet to public route table
     # PublicSubnetRouteTableAssociation:
     #   Type: AWS::EC2::SubnetRouteTableAssociation
